@@ -2,6 +2,8 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\App\Profile;
+use App\Filament\Pages\Auth\Login;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -28,7 +30,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(Login::class)
+            ->profile(Profile::class, false)
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -63,11 +67,16 @@ class AdminPanelProvider extends PanelProvider
             // ->brandLogoHeight('3.5rem')
             // ->favicon(asset('img/favicon.png'))
             ->spa()
-            ->passwordReset()
+
             ->userMenuItems([
                 'logout' => MenuItem::make()->label('Sair')
             ])
+            ->sidebarCollapsibleOnDesktop()
+            //            ->sidebarFullyCollapsibleOnDesktop()
             // ->tenant(Account::class)
-            ->darkMode(false);
+            ->darkMode(false)
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
+            ->globalSearchFieldKeyBindingSuffix();
     }
 }
