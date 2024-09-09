@@ -9,7 +9,8 @@
         "laravel/framework": "^11.9",
         "laravel/horizon": "^5.28",
         "laravel/telescope": "^5.2",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "livewire/volt": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
