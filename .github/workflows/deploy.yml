@@ -20,7 +20,7 @@ jobs:
           script_stop: false
           debug: false
           script: |
-            cd /home/deploy/avalahub
+            cd ${{ secrets.DIRECTORY }}
             git branch
             git pull
             # Check if there are changes in the migrations folder or composer.json
